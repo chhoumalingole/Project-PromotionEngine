@@ -45,11 +45,37 @@ namespace PromotionEngine
             SKUBPricePerItem = FetchSKUPricePerItem("B");
             SKUCPricePerItem = FetchSKUPricePerItem("C");
             SKUDPricePerItem = FetchSKUPricePerItem("D");
+            
+            // Calculation Promotion for SKU A
+            if(SKUAQuantity < 3)
+            {
+                SKUAPrice = SKUAQuantity * SKUAPricePerItem;
+            }
+            else
+            {
+                int promotionQuantity = SKUAQuantity / 3;
+                int remainingQuantity = SKUAQuantity % 3;
 
-            Console.WriteLine("SKU A Price: " + SKUAPricePerItem);
-            Console.WriteLine("SKU B Price: " + SKUBPricePerItem);
-            Console.WriteLine("SKU C Price: " + SKUCPricePerItem);
-            Console.WriteLine("SKU D Price: " + SKUDPricePerItem);
+                SKUAPrice = (promotionQuantity * 130) + (remainingQuantity * SKUAPricePerItem);
+            }
+
+            Console.WriteLine("SKU A Price: " + SKUAPrice);
+
+            if (SKUBQuantity < 2)
+            {
+                SKUBPrice = SKUBQuantity * SKUBPricePerItem;
+            }
+            else
+            {
+                int promotionQuantity = SKUBQuantity / 2;
+                int remainingQuantity = SKUBQuantity % 2;
+
+                SKUBPrice = (promotionQuantity * 45) + (remainingQuantity * SKUBPricePerItem);
+            }
+
+            Console.WriteLine("SKU B Price: " + SKUBPrice);
+
+
 
             return TotalPrice;
         }
