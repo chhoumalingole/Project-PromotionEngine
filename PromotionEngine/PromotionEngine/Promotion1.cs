@@ -75,7 +75,27 @@ namespace PromotionEngine
 
             Console.WriteLine("SKU B Price: " + SKUBPrice);
 
+            //Applying Promotion for SKU C + SKU D
 
+            if(SKUCQuantity < SKUDQuantity)
+            {
+                int quantityDiff = SKUDQuantity - SKUCQuantity;
+
+                SKUC_DPrice = ((SKUDQuantity - quantityDiff) * 30) + (quantityDiff * SKUDPricePerItem);
+
+            }
+            else if(SKUCQuantity > SKUDQuantity)
+            {
+                int quantityDiff = SKUCQuantity - SKUDQuantity;
+
+                SKUC_DPrice = ((SKUCQuantity - quantityDiff) * 30) + (quantityDiff * SKUCPricePerItem);
+            }
+            else
+            {
+                SKUC_DPrice = SKUCQuantity * 30;
+            }
+
+            Console.WriteLine("SKU C & SKU D Combined Price: " + SKUC_DPrice);
 
             return TotalPrice;
         }
