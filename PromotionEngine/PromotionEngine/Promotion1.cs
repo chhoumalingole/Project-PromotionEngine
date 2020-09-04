@@ -59,7 +59,7 @@ namespace PromotionEngine
                 SKUAPrice = (promotionQuantity * 130) + (remainingQuantity * SKUAPricePerItem);
             }
 
-            Console.WriteLine("SKU A Price: " + SKUAPrice);
+            
 
             if (SKUBQuantity < 2)
             {
@@ -73,7 +73,7 @@ namespace PromotionEngine
                 SKUBPrice = (promotionQuantity * 45) + (remainingQuantity * SKUBPricePerItem);
             }
 
-            Console.WriteLine("SKU B Price: " + SKUBPrice);
+            
 
             //Applying Promotion for SKU C + SKU D
 
@@ -95,7 +95,15 @@ namespace PromotionEngine
                 SKUC_DPrice = SKUCQuantity * 30;
             }
 
+            Console.WriteLine("\n");
+
+            Console.WriteLine("***********************Cart Pricing Summary***********************");
+
+            Console.WriteLine("SKU A Price: " + SKUAPrice);
+            Console.WriteLine("SKU B Price: " + SKUBPrice);
             Console.WriteLine("SKU C & SKU D Combined Price: " + SKUC_DPrice);
+
+            TotalPrice = SKUAPrice + SKUBPrice + SKUC_DPrice;
 
             return TotalPrice;
         }

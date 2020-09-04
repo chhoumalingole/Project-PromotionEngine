@@ -69,7 +69,9 @@ namespace PromotionEngine
             }
 
             Promotion1 obj = new Promotion1(products, cartItems);
-            obj.ApplyPromotionAndCalculatePrice();
+            int totalPrice = obj.ApplyPromotionAndCalculatePrice();
+
+            Console.WriteLine("Total Price: " + totalPrice);
 
             Console.ReadKey();
         }
