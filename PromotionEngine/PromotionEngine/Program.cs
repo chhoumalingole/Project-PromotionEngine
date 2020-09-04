@@ -68,6 +68,9 @@ namespace PromotionEngine
                 Console.WriteLine("SKU Name: " + item.SKUName + " SKU Quantity: " + item.SKUQuantity);
             }
 
+            Promotion1 obj = new Promotion1(products, cartItems);
+            obj.ApplyPromotionAndCalculatePrice();
+
             Console.ReadKey();
         }
     }

@@ -47,6 +47,7 @@
     <Compile Include="IPromotion.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Promotion1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
