@@ -41,12 +41,26 @@ namespace PromotionEngine
             SKUCQuantity = FetchSKUQuantityDetails("C");
             SKUDQuantity = FetchSKUQuantityDetails("D");
 
-            Console.WriteLine("SKU A Quantity: " + SKUAQuantity);
-            Console.WriteLine("SKU B Quantity: " + SKUBQuantity);
-            Console.WriteLine("SKU C Quantity: " + SKUCQuantity);
-            Console.WriteLine("SKU D Quantity: " + SKUDQuantity);
+            SKUAPricePerItem = FetchSKUPricePerItem("A");
+            SKUBPricePerItem = FetchSKUPricePerItem("B");
+            SKUCPricePerItem = FetchSKUPricePerItem("C");
+            SKUDPricePerItem = FetchSKUPricePerItem("D");
+
+            Console.WriteLine("SKU A Price: " + SKUAPricePerItem);
+            Console.WriteLine("SKU B Price: " + SKUBPricePerItem);
+            Console.WriteLine("SKU C Price: " + SKUCPricePerItem);
+            Console.WriteLine("SKU D Price: " + SKUDPricePerItem);
 
             return TotalPrice;
+        }
+
+        private int FetchSKUPricePerItem(string SKUName)
+        {
+            int SKUPricePerItem = 0;
+
+            SKUPricePerItem = Convert.ToInt32(_product.Where(q => q.SKUName == SKUName).Select(q => q.SKUPrice).FirstOrDefault());
+
+            return SKUPricePerItem;
         }
 
         private int FetchSKUQuantityDetails(string SKUName)
@@ -57,5 +71,7 @@ namespace PromotionEngine
 
             return SKUQuantity;
         }
+
+
     }
 }
