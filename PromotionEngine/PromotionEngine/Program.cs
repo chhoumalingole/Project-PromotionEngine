@@ -20,6 +20,8 @@ namespace PromotionEngine
 
             };
 
+            List<Cart> cartItems = new List<Cart>();
+
             Console.WriteLine("***********************Promotion Engine***********************");
             Console.WriteLine("***********************SKU List***********************");
 
@@ -28,6 +30,42 @@ namespace PromotionEngine
             foreach (var item in products)
             {
                 Console.WriteLine("SKU: " + item.SKUName + " Price: " + item.SKUPrice);
+            }
+
+            Console.WriteLine("\n");
+
+            Console.WriteLine("***********************Building Shopping Cart***********************");
+
+            foreach (var item in products)
+            {
+                string userInput;
+                Console.WriteLine("Enter SKU " + item.SKUName + " Quantity:");
+                userInput = Console.ReadLine();
+                int SKUQuantity;
+
+                while(!int.TryParse(userInput, out SKUQuantity))
+                {
+                    Console.WriteLine("Please enter integer value only");
+                    Console.WriteLine("Enter SKU " + item.SKUName + " Quantity:");
+                    userInput = Console.ReadLine();
+                }
+
+                Cart cartItem = new Cart()
+                {
+                    SKUName = item.SKUName,
+                    SKUQuantity = SKUQuantity
+                };
+
+                cartItems.Add(cartItem);
+            }
+
+            Console.WriteLine("\n");
+
+            Console.WriteLine("***********************Cart Summary***********************");
+
+            foreach (var item in cartItems)
+            {
+                Console.WriteLine("SKU Name: " + item.SKUName + " SKU Quantity: " + item.SKUQuantity);
             }
 
             Console.ReadKey();
